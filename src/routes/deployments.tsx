@@ -68,7 +68,7 @@ const linkedInDump: ProfileDump[] = [
 ];
 
 function ProfileLog() {
-  const dump = linkedInDump[0];
+  const dump = linkedInDump[0]!;
   return (
     <Panel
       title="Identity Stream"
