@@ -26,6 +26,106 @@ const events: { time: string; model: string; version: string; env: string; statu
   { time: "Yesterday", model: "embeddings-e5-large", version: "v2.1.0", env: "prod", status: "succeeded", tone: "success", author: "s.chen", sha: "4d19c66", note: "Re-indexed 41M vectors with zero downtime." },
 ];
 
+// Mock LinkedIn profile data dump (raw payload → rendered below as a deployment log)
+type ProfileDump = {
+  profile: { name: string; headline: string; location: string; open_to_work: boolean };
+  experience: { company: string; title: string; period: string; current: boolean; highlights: string[] }[];
+  skills: string[];
+};
+const linkedInDump: ProfileDump[] = [
+  {
+    profile: {
+      name: "Arjun Rao",
+      headline: "Senior ML Engineer · Scientific ML & Production Inference Systems",
+      location: "Bengaluru, India",
+      open_to_work: false,
+    },
+    experience: [
+      {
+        company: "helios-labs",
+        title: "Senior ML Engineer, Scientific ML",
+        period: "2023-04 → present",
+        current: true,
+        highlights: ["PINN training infra for heat-transfer and Navier–Stokes solvers", "Cut inference p95 by 41% with INT8 quantization rollout", "Own model registry + canary pipeline for 12 production models"],
+      },
+      {
+        company: "vectorfold-ai",
+        title: "ML Engineer",
+        period: "2020-09 → 2023-03",
+        current: false,
+        highlights: ["Shipped embeddings-e5 retraining loop, 41M-vector index", "Built drift monitors that cut silent failures to zero"],
+      },
+      {
+        company: "quantile-systems",
+        title: "Data Scientist → ML Engineer",
+        period: "2018-06 → 2020-08",
+        current: false,
+        highlights: ["Fraud-detection XGBoost stack, +18% precision at fixed recall"],
+      },
+    ],
+    skills: ["PyTorch", "JAX", "MLflow", "Kubernetes", "CUDA", "PINNs", "XGBoost", "Ray", "Triton Inference Server"],
+  },
+];
+
+function ProfileLog() {
+  const dump = linkedInDump[0]!;
+  return (
+    <Panel
+      title="Identity Stream"
+      meta={
+        <span className="inline-flex items-center gap-1.5">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-success" />
+          </span>
+          linkedin/profile.dump · streaming
+        </span>
+      }
+    >
+      <div className="space-y-4">
+        <div className="num rounded-md border border-border bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
+          <p><span className="text-primary">{"{"} </span><span className="text-primary">"name":</span> <span className="text-foreground">"{dump.profile.name}"</span><span className="text-primary">,</span></p>
+          <p><span className="text-primary">"headline":</span> <span className="text-foreground">"{dump.profile.headline}"</span><span className="text-primary">,</span></p>
+          <p><span className="text-primary">"location":</span> <span className="text-foreground">"{dump.profile.location}"</span> <span className="text-primary">{"}"}</span></p>
+        </div>
+        <ol className="relative">
+          {dump.experience.map((job, i) => (
+            <li key={job.company} className="relative flex gap-4 pb-6 last:pb-0">
+              {i < dump.experience.length - 1 && <span className="absolute left-[11px] top-7 h-[calc(100%-1.25rem)] w-px bg-border" />}
+              <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground">
+                <GitCommit className="size-3.5" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="num text-sm font-medium">{job.title.toLowerCase().replace(/ /g, "-")}</span>
+                  <span className="num text-xs text-muted-foreground">@{job.company}</span>
+                  {job.current ? (
+                    <Status tone="success">ACTIVE</Status>
+                  ) : (
+                    <Status tone="muted">shipped</Status>
+                  )}
+                  <span className="ml-auto text-xs text-muted-foreground">{job.period}</span>
+                </div>
+                <ul className="mt-1.5 space-y-0.5">
+                  {job.highlights.map((h) => (
+                    <li key={h} className="text-sm text-muted-foreground">· {h}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div className="flex flex-wrap gap-1.5 border-t border-border pt-3">
+          <span className="num mr-1 text-[11px] uppercase tracking-widest text-muted-foreground">skills:</span>
+          {dump.skills.map((s) => (
+            <span key={s} className="num rounded border border-border bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground">{s}</span>
+          ))}
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
 function Feed() {
   return (
     <div className="space-y-6">
@@ -53,6 +153,7 @@ function Feed() {
           ))}
         </ol>
       </Panel>
+      <ProfileLog />
     </div>
   );
 }
