@@ -84,9 +84,9 @@ function ProfileLog() {
     >
       <div className="space-y-4">
         <div className="num rounded-md border border-border bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
-          <p><span className="text-primary">{"{"}" name":</span> <span className="text-foreground">"{dump.profile.name}"</span><span className="text-primary">,</span></p>
-          <p><span className="text-primary">" headline":</span> <span className="text-foreground">"{dump.profile.headline}"</span><span className="text-primary">,</span></p>
-          <p><span className="text-primary">" location":</span> <span className="text-foreground">"{dump.profile.location}"</span> <span className="text-primary">{"}"}</span></p>
+          <p><span className="text-primary">{"{"} </span><span className="text-primary">"name":</span> <span className="text-foreground">"{dump.profile.name}"</span><span className="text-primary">,</span></p>
+          <p><span className="text-primary">"headline":</span> <span className="text-foreground">"{dump.profile.headline}"</span><span className="text-primary">,</span></p>
+          <p><span className="text-primary">"location":</span> <span className="text-foreground">"{dump.profile.location}"</span> <span className="text-primary">{"}"}</span></p>
         </div>
         <ol className="relative">
           {dump.experience.map((job, i) => (
