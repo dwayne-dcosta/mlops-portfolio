@@ -82,10 +82,7 @@ const linkedInDump: ProfileDump[] = [
 function ProfileLog() {
   const dump = linkedInDump[0]!;
   return (
-    <Panel
-      title="Identity Stream"
-      meta={
-        <span className="flex items-center gap-1.5">
+    
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
             <span className="relative inline-flex size-1.5 rounded-full bg-success" />
@@ -142,39 +139,41 @@ function Feed() {
   return (
     <div className="space-y-6">
       <PageHeader eyebrow="Releases" title="Deployment Feed" desc="Every rollout, canary and rollback — newest first." right={<span className="num text-xs text-muted-foreground">24 deploys · 7d · 96% success</span>} />
-      <div className="grid gap-6 xl:grid-cols-3">
-        <div className="xl:col-span-2">
-          <Panel title="Activity" meta="all environments">
-            <ol className="relative">
-              {events.map((e, i) => (
-                <li key={e.sha} className="relative flex gap-4 pb-6 last:pb-0">
-                  {i < events.length - 1 && <span className="absolute left-[11px] top-7 h-[calc(100%-1.25rem)] w-px bg-border" />}
-                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground">
-                    <GitCommit className="size-3.5" />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="num text-sm font-medium">{e.model}</span>
-                      <span className="num text-xs text-muted-foreground">{e.version}</span>
-                      <Status tone={e.tone}>{e.status}</Status>
-                      <span className="num rounded bg-muted/60 px-1 text-[11px] uppercase tracking-wide text-muted-foreground">{e.env}</span>
-                      <span className="ml-auto text-xs text-muted-foreground">{e.time}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-foreground">{e.note}</p>
-                    <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                      <span className="num">{e.author}</span>
-                      <span>·</span>
-                      <span className="num font-mono">{e.sha}</span>
-                    </div>
+      
+      {/* Activity Panel (Full Width) */}
+      <div className="w-full">
+        <Panel title="Activity" meta="all environments">
+          <ol className="relative">
+            {events.map((e, i) => (
+              <li key={e.sha} className="relative flex gap-4 pb-6 last:pb-0">
+                {i < events.length - 1 && <span className="absolute left-[11px] top-7 h-[calc(100%-1.25rem)] w-px bg-border" />}
+                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground">
+                  <GitCommit className="size-3.5" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="num text-sm font-medium">{e.model}</span>
+                    <span className="num text-xs text-muted-foreground">{e.version}</span>
+                    <Status tone={e.tone}>{e.status}</Status>
+                    <span className="num rounded bg-muted/60 px-1 text-[11px] uppercase tracking-wide text-muted-foreground">{e.env}</span>
+                    <span className="ml-auto text-xs text-muted-foreground">{e.time}</span>
                   </div>
-                </li>
-              ))}
-            </ol>
-          </Panel>
-        </div>
-        <div>
-          <ProfileLog />
-        </div>
+                  <p className="mt-1 text-sm text-foreground">{e.note}</p>
+                  <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
+                    <span className="num">{e.author}</span>
+                    <span>·</span>
+                    <span className="num font-mono">{e.sha}</span>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Panel>
+      </div>
+
+      {/* Identity Stream Panel (Full Width Below) */}
+      <div className="w-full">
+        <ProfileLog />
       </div>
     </div>
   );
