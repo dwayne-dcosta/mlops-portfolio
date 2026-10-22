@@ -21,7 +21,7 @@ const kpis = [
   { label: "p95 inference latency", value: "42.8", unit: "ms", delta: "−3.1%", data: [52, 50, 48, 49, 46, 45, 47, 44, 43, 42] },
   { label: "GPU utilization", value: "78.4", unit: "%", delta: "+4.2%", data: [61, 64, 70, 68, 72, 75, 74, 77, 79, 78] },
   { label: "Requests / sec", value: "12.4k", unit: "", delta: "+11%", data: [8, 9, 9.5, 10, 10.2, 11, 11.4, 11.8, 12, 12.4] },
-  { label: "PINN residual (L2)", value: "3.2e-4", unit: "", delta: "−0.8%", data: [9, 8, 7, 6.5, 5, 4.6, 4, 3.8, 3.4, 3.2] },
+  { label: "Model Governance Audits", value: "100%", unit: "", delta: "0.0%", data: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9] },
 ];
 
 const latency = Array.from({ length: 24 }, (_, i) => ({
@@ -31,17 +31,17 @@ const latency = Array.from({ length: 24 }, (_, i) => ({
 }));
 
 const nodes = [
-  { name: "gpu-a100-us-east-01", util: 92, mem: 71, temp: 74, tone: "warning" as const, s: "hot" },
-  { name: "gpu-a100-us-east-02", util: 81, mem: 64, temp: 66, tone: "success" as const, s: "healthy" },
-  { name: "gpu-h100-eu-west-01", util: 74, mem: 58, temp: 61, tone: "success" as const, s: "healthy" },
-  { name: "gpu-h100-eu-west-02", util: 0, mem: 0, temp: 34, tone: "destructive" as const, s: "offline" },
-  { name: "tpu-v5e-asia-01", util: 66, mem: 49, temp: 55, tone: "success" as const, s: "healthy" },
+  { name: "aws-ec2-p4de-us-east-1a", util: 92, mem: 71, temp: 74, tone: "warning" as const, s: "hot" },
+  { name: "aws-ec2-p4de-us-east-1b", util: 81, mem: 64, temp: 66, tone: "success" as const, s: "healthy" },
+  { name: "aws-ec2-p5-eu-west-1a", util: 74, mem: 58, temp: 61, tone: "success" as const, s: "healthy" },
+  { name: "aws-ec2-p5-eu-west-1b", util: 0, mem: 0, temp: 34, tone: "destructive" as const, s: "offline" },
+  { name: "aws-trainium-trn1-us-west-2", util: 66, mem: 49, temp: 55, tone: "success" as const, s: "healthy" },
 ];
 
 const services = [
-  ["Feature store", "success", "99.99%"], ["Inference gateway", "success", "99.97%"],
-  ["Training scheduler", "warning", "99.41%"], ["Simulation solver (FNO)", "success", "99.92%"],
-  ["Vector index", "success", "99.98%"], ["Data ingestion (Kafka)", "info", "maint."],
+  ["Compliance auditor", "success", "100.00%"], ["Inference gateway", "success", "99.97%"],
+  ["Model telemetry stream", "success", "99.94%"], ["RAG vector database", "success", "99.98%"],
+  ["Data ingestion (Kafka)", "info", "maint."],
 ] as const;
 
 function Bar({ v }: { v: number }) {
