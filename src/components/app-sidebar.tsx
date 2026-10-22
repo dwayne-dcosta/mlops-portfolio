@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Activity, Rocket, Boxes, Cpu } from "lucide-react";
+import { Activity, Rocket, Boxes, Cpu, FlaskConical } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -17,6 +17,7 @@ const items = [
   { title: "System Health", url: "/", icon: Activity },
   { title: "Deployment Feed", url: "/deployments", icon: Rocket },
   { title: "Model Registry", url: "/models", icon: Boxes },
+  { title: "Model Sandbox", url: "/sandbox", icon: FlaskConical },
 ] as const;
 
 export function AppSidebar() {
