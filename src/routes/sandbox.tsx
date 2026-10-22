@@ -73,7 +73,7 @@ function simulate(lrSlider: number, batch: number, reg: number) {
     data.push({ epoch: e + 1, train: Math.max(0, train), val: Math.max(0, val) });
   }
 
-  const last = data[data.length - 1];
+  const last = data[data.length - 1] ?? { train: NaN, val: NaN, epoch: EPOCHS };
   const bestVal = Math.min(...data.map((d) => d.val));
   const valGap = last.val - bestVal;
   const finalTrain = last.train;
