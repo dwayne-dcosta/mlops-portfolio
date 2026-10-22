@@ -35,37 +35,51 @@ type ProfileDump = {
 const linkedInDump: ProfileDump[] = [
   {
     profile: {
-      name: "Arjun Rao",
-      headline: "Senior ML Engineer · Scientific ML & Production Inference Systems",
-      location: "Bengaluru, India",
-      open_to_work: false,
+      name: "Dwayne D'costa",
+      headline: "AWS AI & ML Scholar '26 | AI Solutions & Governance Engineer | AWS Cloud & LLM Orchestration | ISO 42001 & EU AI Act Compliance",
+      location: "Panaji, Goa, India",
+      open_to_work: true,
     },
     experience: [
       {
-        company: "helios-labs",
-        title: "Senior ML Engineer, Scientific ML",
-        period: "2023-04 → present",
+        company: "Reinbold Saunabau",
+        title: "AI Solutions & Governance Engineer",
+        period: "2024 - present",
         current: true,
-        highlights: ["PINN training infra for heat-transfer and Navier–Stokes solvers", "Cut inference p95 by 41% with INT8 quantization rollout", "Own model registry + canary pipeline for 12 production models"],
+        highlights: [
+          "Architecting production-grade retrieval-augmented generation (RAG) pipelines optimized for enterprise scale.",
+          "Designing and deploying end-to-end automation ecosystems bridging conversational AI and legacy systems.",
+          "Implementing technical risk mitigation frameworks aligned with international standards like the EU AI Act and ISO/IEC 42001 (AIMS)."
+        ]
       },
       {
-        company: "vectorfold-ai",
-        title: "ML Engineer",
-        period: "2020-09 → 2023-03",
+        company: "AWS Nanodegree Core Infrastructure",
+        title: "Cloud & Machine Learning Automation Systems",
+        period: "2026",
         current: false,
-        highlights: ["Shipped embeddings-e5 retraining loop, 41M-vector index", "Built drift monitors that cut silent failures to zero"],
-      },
-      {
-        company: "quantile-systems",
-        title: "Data Scientist → ML Engineer",
-        period: "2018-06 → 2020-08",
-        current: false,
-        highlights: ["Fraud-detection XGBoost stack, +18% precision at fixed recall"],
-      },
+        highlights: [
+          "Completed specialized structural parameters for engineering highly scalable cloud deployments.",
+          "Provisioned automated environment staging utilizing CloudFormation infrastructure scripts and secure IAM boundary parameters.",
+          "Configured elastic computing clusters and continuous delivery components to manage operational inference spikes."
+        ]
+      }
     ],
-    skills: ["PyTorch", "JAX", "MLflow", "Kubernetes", "CUDA", "PINNs", "XGBoost", "Ray", "Triton Inference Server"],
-  },
+    skills: [
+      "AWS Cloud",
+      "LLM Orchestration", 
+      "RAG Pipelines", 
+      "AI Governance", 
+      "ISO 42001 Compliance", 
+      "EU AI Act",
+      "Python", 
+      "Machine Learning", 
+      "Automation Ecosystems",
+      "Cloud Infrastructure"
+    ]
+  }
 ];
+
+
 
 function ProfileLog() {
   const dump = linkedInDump[0]!;
