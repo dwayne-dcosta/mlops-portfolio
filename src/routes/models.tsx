@@ -17,13 +17,13 @@ export const Route = createFileRoute("/models")({
 
 type Tone = "success" | "warning" | "info" | "muted";
 const models: { name: string; type: string; version: string; stage: string; tone: Tone; metric: string; params: string; framework: string; updated: string }[] = [
-  { name: "navier-stokes-fno", type: "Neural operator", version: "v2.3.1", stage: "production", tone: "success", metric: "rel L2 1.8e-3", params: "12.4M", framework: "JAX", updated: "18m" },
-  { name: "fraud-detector-xgb", type: "Classifier", version: "v4.12.0", stage: "canary", tone: "info", metric: "AUC 0.981", params: "—", framework: "XGBoost", updated: "2m" },
-  { name: "llm-reranker-7b", type: "Transformer", version: "v1.8.0", stage: "staging", tone: "warning", metric: "nDCG@10 0.742", params: "7.1B", framework: "PyTorch", updated: "1h" },
-  { name: "heat-transfer-pinn", type: "PINN", version: "v0.9.2", stage: "staging", tone: "warning", metric: "residual 3.2e-4", params: "1.1M", framework: "PyTorch", updated: "5h" },
-  { name: "demand-forecast-tft", type: "Time series", version: "v3.0.3", stage: "production", tone: "success", metric: "MAPE 6.4%", params: "38M", framework: "PyTorch", updated: "3h" },
-  { name: "embeddings-e5-large", type: "Encoder", version: "v2.1.0", stage: "production", tone: "success", metric: "MTEB 64.2", params: "335M", framework: "PyTorch", updated: "1d" },
-  { name: "molecular-gnn", type: "Graph NN", version: "v0.4.0", stage: "archived", tone: "muted", metric: "MAE 0.041 eV", params: "4.6M", framework: "JAX", updated: "21d" },
+  { name: "governance-guardrail-aims", type: "EU AI Act Compliance Engine", version: "v1.2.0", stage: "production", tone: "success", metric: "Risk Mit. 99.8%", params: "—", framework: "ISO 42001 Core", updated: "2m" },
+  { name: "enterprise-rag-orchestrator", type: "Semantic Vector Pipeline", version: "v2.0.4", stage: "production", tone: "success", metric: "nDCG@10 0.892", params: "—", framework: "Python / AWS", updated: "12m" },
+  { name: "cloud-autoscaler-fleet", type: "Elastic Infrastructure Script", version: "v1.0.0", stage: "production", tone: "success", metric: "Uptime 99.99%", params: "—", framework: "AWS CloudFormation", updated: "1h" },
+  { name: "boundary-check-agent", type: "Conversational Audit Validator", version: "v0.9.4", stage: "canary", tone: "info", metric: "p95 Latency 45ms", params: "7B", framework: "PyTorch", updated: "32m" },
+  { name: "heat-transfer-pinn", type: "Physics-Informed Neural Net", version: "v0.9.2", stage: "staging", tone: "warning", metric: "residual 3.2e-4", params: "1.1M", framework: "PyTorch", updated: "5h" },
+  { name: "demand-forecast-tft", type: "Time series simulation", version: "v3.0.3", stage: "staging", tone: "warning", metric: "MAPE 6.4%", params: "38M", framework: "PyTorch", updated: "3h" },
+  { name: "molecular-gnn", type: "Graph NN Model", version: "v0.4.0", stage: "archived", tone: "muted", metric: "MAE 0.041 eV", params: "4.6M", framework: "JAX", updated: "21d" },
 ];
 
 function Registry() {
