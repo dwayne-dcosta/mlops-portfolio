@@ -1,26 +1,27 @@
-# MLOps Portfolio
+# MLOps & AI Governance Portfolio Platform
 
-"Build a minimalist, dark-themed enterprise operations dashboard for a Machine Learning and Scientific ML Engineer. Include a collapsible left-hand navigation sidebar with three tabs: 'System Health', 'Deployment Feed', and 'Model Registry'. Use a clean tech-editorial aesthetic like Stripe or Datadog using shadcn/ui styles."
+A production-grade, metrics-dense operational telemetry dashboard engineered to showcase system health, model linage, and deployment lifecycle streams for enterprise AI pipelines.
 
-This project was built with [Lovable](https://lovable.dev).
+**Live Application:** (https://lovable.app)](https://mlops-portfolio.lovable.app)
 
-**Live app**: https://mlops-portfolio.lovable.app
+## 🛠️ Core Architecture & Stack
+* **Frontend Core:** React 19, TypeScript, Tailwind CSS
+* **Routing & State:** TanStack Start (File-based Routing framework)
+* **Data Visualizations:** Recharts (High-performance streaming area and metric components)
+* **Design Pattern:** shadcn/ui editorial console specification
 
-## Build with Lovable
+## 📊 Dashboard Modules
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/46b2388b-a7a9-48c6-9de0-1c16642700fd).
+### 1. System Health Engine
+Simulates real-time infrastructure metrics across elastic computing clusters, tracking p95 inference latencies, compliance pass rates, and compute nodes customized to mimic real **AWS EC2 accelerated fleets** (P4de, P5, and Trainium instances).
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+### 2. Live Deployment Feed
+Built as an automated activity logging pipeline designed to consume structured profile payloads. This section streams my professional timeline directly, showcasing milestones across:
+* **AI Governance & Risk Mitigation:** ISO/IEC 42001 (AIMS) and EU AI Act alignment frameworks.
+* **AWS Cloud Engineering:** Capstone structures from my completed **AWS Cloud Nanodegree**, highlighting automated infrastructure orchestration via CloudFormation templates, secure IAM boundary policies, and auto-scaled processing networks.
 
-## Development
+### 3. Model Registry Catalog
+A fully versioned production model index mapping operational status tags (Stable, Inference, Canary, Staging) alongside key mathematical evaluation metrics for semantic vector databases, LLM guardrails, and physics-informed computational workflows.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+---
+*Maintained by Dwayne D'costa — AWS AI & ML Scholar '26*
