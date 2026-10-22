@@ -80,9 +80,13 @@ const linkedInDump: ProfileDump[] = [
 ];
 
 function ProfileLog() {
-  const dump = linkedInDump[0]!;
+  const dump = linkedInDump[0];
+  if (!dump) return null;
   return (
-    
+    <Panel
+      title="Identity Stream"
+      meta={
+        <span className="inline-flex items-center gap-1.5">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
             <span className="relative inline-flex size-1.5 rounded-full bg-success" />
