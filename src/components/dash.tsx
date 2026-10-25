@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, desc, right }: { eyebrow: string; t
   );
 }
 
-export function Panel({ title, meta, children, className }: { title: string; meta?: ReactNode; children: ReactNode; className?: string }) {
+export function Panel({ title, meta, children, className }: { title: string; meta?: ReactNode; children: ReactNode; className?: string | undefined }) {
   return (
     <section className={cn("rounded-lg border border-border bg-card", className)}>
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
