@@ -107,6 +107,96 @@
   --sidebar-ring: oklch(0.82 0.15 165 / 50%);
 }
 
+/*
+ * Palette profiles.
+ * The default (:root above) is "Midnight MLOps". These classes are applied to
+ * <html> by the settings panel and override the semantic tokens wholesale.
+ */
+
+html.theme-paper {
+  --background: oklch(0.985 0.002 260);
+  --foreground: oklch(0.22 0.012 260);
+  --card: oklch(1 0 260);
+  --card-foreground: oklch(0.22 0.012 260);
+  --popover: oklch(1 0 260);
+  --popover-foreground: oklch(0.22 0.012 260);
+  --primary: oklch(0.5 0.13 165);
+  --primary-foreground: oklch(0.98 0.01 165);
+  --secondary: oklch(0.95 0.003 260);
+  --secondary-foreground: oklch(0.25 0.01 260);
+  --muted: oklch(0.95 0.003 260);
+  --muted-foreground: oklch(0.45 0.015 260);
+  --accent: oklch(0.94 0.004 260);
+  --accent-foreground: oklch(0.2 0.012 260);
+  --destructive: oklch(0.55 0.21 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --success: oklch(0.45 0.14 165);
+  --warning: oklch(0.6 0.15 70);
+  --info: oklch(0.5 0.14 240);
+  --border: oklch(0.89 0.005 260);
+  --input: oklch(0.89 0.005 260);
+  --ring: oklch(0.5 0.13 165 / 40%);
+  --chart-1: oklch(0.5 0.13 165);
+  --chart-2: oklch(0.55 0.13 240);
+  --chart-3: oklch(0.6 0.14 70);
+  --chart-4: oklch(0.55 0.2 25);
+  --chart-5: oklch(0.6 0.01 260);
+  --sidebar: oklch(0.965 0.002 260);
+  --sidebar-foreground: oklch(0.3 0.01 260);
+  --sidebar-primary: oklch(0.5 0.13 165);
+  --sidebar-primary-foreground: oklch(0.98 0.01 165);
+  --sidebar-accent: oklch(0.93 0.004 260);
+  --sidebar-accent-foreground: oklch(0.2 0.012 260);
+  --sidebar-border: oklch(0.87 0.005 260);
+  --sidebar-ring: oklch(0.5 0.13 165 / 40%);
+}
+
+html.theme-terminal {
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
+  --background: oklch(0.11 0.02 150);
+  --foreground: oklch(0.92 0.1 145);
+  --card: oklch(0.14 0.02 150);
+  --card-foreground: oklch(0.92 0.1 145);
+  --popover: oklch(0.15 0.02 150);
+  --popover-foreground: oklch(0.92 0.1 145);
+  --primary: oklch(0.87 0.21 145);
+  --primary-foreground: oklch(0.11 0.02 150);
+  --secondary: oklch(0.18 0.02 150);
+  --secondary-foreground: oklch(0.9 0.08 145);
+  --muted: oklch(0.18 0.02 150);
+  --muted-foreground: oklch(0.7 0.08 145);
+  --accent: oklch(0.2 0.02 150);
+  --accent-foreground: oklch(0.95 0.1 145);
+  --destructive: oklch(0.7 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --success: oklch(0.87 0.21 145);
+  --warning: oklch(0.85 0.18 90);
+  --info: oklch(0.8 0.15 200);
+  --border: oklch(0.35 0.04 150);
+  --input: oklch(0.35 0.04 150);
+  --ring: oklch(0.87 0.21 145 / 60%);
+  --chart-1: oklch(0.87 0.21 145);
+  --chart-2: oklch(0.8 0.15 200);
+  --chart-3: oklch(0.85 0.18 90);
+  --chart-4: oklch(0.7 0.22 25);
+  --chart-5: oklch(0.75 0.05 150);
+  --sidebar: oklch(0.09 0.02 150);
+  --sidebar-foreground: oklch(0.85 0.08 145);
+  --sidebar-primary: oklch(0.87 0.21 145);
+  --sidebar-primary-foreground: oklch(0.11 0.02 150);
+  --sidebar-accent: oklch(0.18 0.02 150);
+  --sidebar-accent-foreground: oklch(0.95 0.1 145);
+  --sidebar-border: oklch(0.3 0.04 150);
+  --sidebar-ring: oklch(0.87 0.21 145 / 60%);
+}
+
+/* Theme chip previews for the settings panel (literal values per profile). */
+.chip-dark { --chip-bg: oklch(0.155 0.006 260); --chip-accent: oklch(0.82 0.15 165); }
+.chip-paper { --chip-bg: oklch(0.985 0.002 260); --chip-accent: oklch(0.5 0.13 165); }
+.chip-terminal { --chip-bg: oklch(0.11 0.02 150); --chip-accent: oklch(0.87 0.21 145); }
+.chip { background: var(--chip-bg); display: flex; align-items: center; justify-content: center; }
+.chip-dot { background: var(--chip-accent); }
+
 @layer base {
   * {
     border-color: var(--color-border);
