@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DeploymentsRouteImport } from './routes/deployments'
 import { Route as ModelsRouteImport } from './routes/models'
 import { Route as SandboxRouteImport } from './routes/sandbox'
+import { Route as TopologyRouteImport } from './routes/topology'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const SandboxRoute = SandboxRouteImport.update({
   path: '/sandbox',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TopologyRoute = TopologyRouteImport.update({
+  id: '/topology',
+  path: '/topology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/deployments': typeof DeploymentsRoute
   '/models': typeof ModelsRoute
   '/sandbox': typeof SandboxRoute
+  '/topology': typeof TopologyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/deployments': typeof DeploymentsRoute
   '/models': typeof ModelsRoute
   '/sandbox': typeof SandboxRoute
+  '/topology': typeof TopologyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/deployments': typeof DeploymentsRoute
   '/models': typeof ModelsRoute
   '/sandbox': typeof SandboxRoute
+  '/topology': typeof TopologyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/deployments' | '/models' | '/sandbox'
+  fullPaths: '/' | '/deployments' | '/models' | '/sandbox' | '/topology'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/deployments' | '/models' | '/sandbox'
-  id: '__root__' | '/' | '/deployments' | '/models' | '/sandbox'
+  to: '/' | '/deployments' | '/models' | '/sandbox' | '/topology'
+  id: '__root__' | '/' | '/deployments' | '/models' | '/sandbox' | '/topology'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   DeploymentsRoute: typeof DeploymentsRoute
   ModelsRoute: typeof ModelsRoute
   SandboxRoute: typeof SandboxRoute
+  TopologyRoute: typeof TopologyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SandboxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/topology': {
+      id: '/topology'
+      path: '/topology'
+      fullPath: '/topology'
+      preLoaderRoute: typeof TopologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeploymentsRoute: DeploymentsRoute,
   ModelsRoute: ModelsRoute,
   SandboxRoute: SandboxRoute,
+  TopologyRoute: TopologyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
