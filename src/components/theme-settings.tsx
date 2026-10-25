@@ -40,7 +40,7 @@ const themes: ThemeProfile[] = [
 const STORAGE_KEY = "tensorline-theme";
 
 function applyTheme(id: ThemeId) {
-  const profile = themes.find((t) => t.id === id) ?? themes[0];
+  const profile = themes.find((t) => t.id === id) ?? themes[0]!;
   document.documentElement.className = profile.htmlClass;
 }
 
