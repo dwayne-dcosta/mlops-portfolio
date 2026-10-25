@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { ThemeSettingsButton } from "@/components/theme-settings";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -132,6 +133,9 @@ function RootComponent() {
             <header className="sticky top-0 z-10 flex h-12 items-center gap-3 border-b border-border bg-background/80 px-3 backdrop-blur">
               <SidebarTrigger />
               <span className="num text-xs text-muted-foreground">workspace / ml-platform / production</span>
+              <div className="ml-auto flex items-center gap-1 pr-8">
+                <ThemeSettingsButton />
+              </div>
             </header>
             <main className="mx-auto w-full max-w-7xl flex-1 p-6">
               <Outlet />
