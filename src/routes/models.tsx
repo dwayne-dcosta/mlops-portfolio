@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Check } from "lucide-react";
 import { PageHeader, Panel, Status } from "@/components/dash";
 
 export const Route = createFileRoute("/models")({
@@ -62,6 +64,94 @@ function Registry() {
           </table>
         </div>
       </Panel>
+      <GovernanceAuditor />
     </div>
+  );
+}
+
+interface AuditCheck {
+  id: string;
+  label: string;
+  detail: string;
+}
+
+const auditChecks: AuditCheck[] = [
+  { id: "GOV-001", label: "PII Data Redaction Boundary", detail: "pii-scrubber v4 · 0 leaks / 1.2M tokens" },
+  { id: "GOV-002", label: "Model Drift Threshold Validation", detail: "PSI 0.018 · threshold 0.20" },
+  { id: "GOV-003", label: "Toxicity Bias Filter Check", detail: "7 demographic slices · max delta 0.9%" },
+  { id: "GOV-004", label: "Training Data Consent Scope", detail: "provenance ledger · 100% attributed" },
+  { id: "GOV-005", label: "Feature Lineage Provenance", detail: "214 features · lineage resolved" },
+  { id: "GOV-006", label: "Explainability Report Signature", detail: "SHAP report · signed, unexpired" },
+  { id: "GOV-007", label: "Adversarial Robustness Probe", detail: "1k perturbations · 99.4% stable" },
+  { id: "GOV-008", label: "Output Logging Retention Policy", detail: "audit trail · 365d retention" },
+];
+
+function formatStamp() {
+  const d = new Date();
+  const pad = (n: number, w = 2) => String(n).padStart(w, "0");
+  return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}.${pad(d.getUTCMilliseconds(), 3)}Z`;
+}
+
+function GovernanceAuditor() {
+  const [rows, setRows] = useState<(AuditCheck & { ts: string })[]>([]);
+  const streaming = rows.length < auditChecks.length;
+
+  useEffect(() => {
+    const i = rows.length;
+    if (i >= auditChecks.length) {
+      const restart = setTimeout(() => setRows([]), 6000);
+      return () => clearTimeout(restart);
+    }
+    const tick = setTimeout(() => {
+      setRows((r) => (r.length === i ? [...r, { ...auditChecks[i]!, ts: formatStamp() }] : r));
+    }, i === 0 ? 700 : 800);
+    return () => clearTimeout(tick);
+  }, [rows]);
+
+  return (
+    <Panel
+      title="AI Governance Auditor"
+      meta={
+        <span className="flex items-center gap-2">
+          <span className="relative flex size-2">
+            <span className={`absolute inline-flex h-full w-full rounded-full bg-success ${streaming ? "animate-ping opacity-75" : "opacity-0"}`} />
+            <span className="relative inline-flex size-2 rounded-full bg-success" />
+          </span>
+          <span>governance/audit.stream · {streaming ? "running" : "complete"}</span>
+        </span>
+      }
+    >
+      <div className="rounded-md border border-border bg-background p-3">
+        <div className="num mb-2 flex items-center justify-between text-[10px] uppercase tracking-widest text-muted-foreground">
+          <span>tensorline@audit-eu-west-1:~$ governance scan --scope production</span>
+          <span>{rows.length}/{auditChecks.length} checks</span>
+        </div>
+        <div className="min-h-[21rem] space-y-1.5">
+          {rows.map((r) => (
+            <div key={r.id} className="num flex items-center gap-3 rounded px-1.5 py-1 text-xs animate-in fade-in slide-in-from-bottom-1 duration-300">
+              <span className="text-[11px] text-muted-foreground">{r.ts}</span>
+              <span className="flex size-4 shrink-0 items-center justify-center rounded-sm border border-success/40 bg-success/15">
+                <Check className="size-3 text-success" strokeWidth={3} />
+              </span>
+              <span className="text-muted-foreground">{r.id}</span>
+              <span className="truncate">{r.label}</span>
+              <span className="ml-auto hidden shrink-0 text-[11px] text-muted-foreground md:inline">{r.detail}</span>
+              <Status tone="success">PASS</Status>
+            </div>
+          ))}
+          {streaming && (
+            <div className="num flex items-center gap-2 px-1.5 py-1 text-xs text-muted-foreground">
+              <span className="inline-block h-3.5 w-1.5 animate-pulse bg-success" />
+              <span>evaluating next control…</span>
+            </div>
+          )}
+          {!streaming && (
+            <div className="num px-1.5 py-1 text-xs text-success">
+              ✓ {auditChecks.length}/{auditChecks.length} controls passed — next scan queued
+            </div>
+          )}
+        </div>
+      </div>
+    </Panel>
   );
 }
