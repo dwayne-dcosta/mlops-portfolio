@@ -44,7 +44,7 @@ const linkedInDump: ProfileDump[] = [
       {
         company: "Reinbold Saunabau",
         title: "AI Solutions & Governance Engineer",
-        period: "2024 - present",
+        period: "2026 - present",
         current: true,
         highlights: [
           "Architecting production-grade retrieval-augmented generation (RAG) pipelines optimized for enterprise scale.",
