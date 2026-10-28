@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeSettingsButton } from "@/components/theme-settings";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -114,6 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <Analytics />
         <Scripts />
       </body>
     </html>
