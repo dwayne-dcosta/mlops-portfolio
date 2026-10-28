@@ -32,7 +32,7 @@ export function AppSidebar() {
               <Cpu className="size-4" />
             </div>
             <div className="flex flex-col leading-tight group-data-[collapsible=icon]:hidden">
-              <span className="text-sm font-semibold text-sidebar-accent-foreground">D'Costa ML Ops</span>
+              <span className="text-sm font-semibold text-sidebar-accent-foreground">Dwayne D'costa ML Ops</span>
               <span className="num text-[10px] uppercase tracking-widest text-muted-foreground">prod · active</span>
             </div>
           </div>
