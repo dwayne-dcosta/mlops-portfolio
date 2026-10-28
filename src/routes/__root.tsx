@@ -81,14 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tensorline ML Ops" },
+      { title: "Dwayne D'costa ML Ops Platform" },
       { name: "description", content: "Operations dashboard for ML and scientific ML engineering." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Tensorline ML Ops" },
+      { name: "author", content: "Dwayne D'costa" },
+      { property: "og:title", content: "Dwayne D'costa ML Ops Platform" },
       { property: "og:description", content: "Operations dashboard for ML and scientific ML engineering." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "dwayne-dcosta" },
     ],
     links: [
       {
@@ -132,7 +132,7 @@ function RootComponent() {
           <div className="flex min-w-0 flex-1 flex-col">
             <header className="sticky top-0 z-10 flex h-12 items-center gap-3 border-b border-border bg-background/80 px-3 backdrop-blur">
               <SidebarTrigger />
-              <span className="num text-xs text-muted-foreground">workspace / ml-platform / production</span>
+              <span className="num text-xs text-muted-foreground">dwayne-dcosta / aws-core / production</span>
               <div className="ml-auto flex items-center gap-1 pr-8">
                 <ThemeSettingsButton />
               </div>
